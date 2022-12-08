@@ -1,7 +1,6 @@
 package spring_introduction;
 
 public class Dog implements Pet {
-    private String name;
 
     public Dog() {
         System.out.println("Dog bean is created");
@@ -11,11 +10,11 @@ public class Dog implements Pet {
         System.out.println("wow-wow");
     }
 
-    public String getName() {
-        return name;
+    public void init() {
+        System.out.println("Class Dog: init method");
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void destroy() {
+        System.out.println("Class Dog: destroy method");
     }
 }
