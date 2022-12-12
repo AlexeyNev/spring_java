@@ -2,12 +2,17 @@ package spring_introduction;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
  * Аннотация @Qualifier.
  * Используется для того, что бы показать спрингу какой именно использовать бин.
  * Если бинов больше одного.
+ *
+ * Аннотация @Value.
+ * Для внедрения строк и других значений можно использовать аннотация @Value.
+ * В этом случае в сеттерах нет необходимости, как это было при конфигурации с помощью XML файла.
  */
 
 @Component("personBean")
@@ -16,7 +21,9 @@ public class Person {
 //    @Qualifier("catBean")
 
     private Pet pet;
+    @Value("${person.surname}")
     private String surname;
+    @Value("${person.age}")
     private int age;
 
     @Autowired
