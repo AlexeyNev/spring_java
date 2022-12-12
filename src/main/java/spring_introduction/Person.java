@@ -1,29 +1,39 @@
 package spring_introduction;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
+/**
+ * Аннотация @Qualifier.
+ * Используется для того, что бы показать спрингу какой именно использовать бин.
+ * Если бинов больше одного.
+ */
 
 @Component("personBean")
 public class Person {
-    @Autowired
+//    @Autowired
+//    @Qualifier("catBean")
+
     private Pet pet;
     private String surname;
     private int age;
 
-//    @Autowired
-//    public Person(Pet pet) {
-//        System.out.println("Person bean is created");
-//        this.pet = pet;
-//    }
+    @Autowired
+    public Person(@Qualifier("catBean") Pet pet) {
+        System.out.println("Person bean is created");
+        this.pet = pet;
+    }
 
     public Person() {
         System.out.println("Person bean is created");
     }
 //    @Autowired
-//    public void setPet(Pet pet) {
-//        System.out.println("Class Person: set pet");
-//        this.pet = pet;
-//    }
+//    @Qualifier("dog")
+    public void setPet(Pet pet) {
+        System.out.println("Class Person: set pet");
+        this.pet = pet;
+    }
 
     public void callYouPet() {
         System.out.println("Hello my lovely Pet!");
