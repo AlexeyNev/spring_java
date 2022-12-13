@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  * В этом случае в сеттерах нет необходимости, как это было при конфигурации с помощью XML файла.
  */
 
-@Component("personBean")
+//@Component("personBean")
 public class Person {
 //    @Autowired
 //    @Qualifier("catBean")
@@ -26,15 +26,20 @@ public class Person {
 //    @Value("${person.age}")
     private int age;
 
-    @Autowired
-    public Person(@Qualifier("catBean") Pet pet) {
+//    @Autowired
+//    public Person(@Qualifier("catBean") Pet pet) {
+//        System.out.println("Person bean is created");
+//        this.pet = pet;
+//    }
+
+        public Person(Pet pet) {
         System.out.println("Person bean is created");
         this.pet = pet;
     }
 
-    public Person() {
-        System.out.println("Person bean is created");
-    }
+//    public Person() {
+//        System.out.println("Person bean is created");
+//    }
 //    @Autowired
 //    @Qualifier("dog")
     public void setPet(Pet pet) {
@@ -43,7 +48,7 @@ public class Person {
     }
 
     public void callYouPet() {
-        System.out.println("Hello my lovely Pet!");
+        System.out.println("callYouPet() method");
         pet.say();
     }
 

@@ -2,7 +2,7 @@ package spring_introduction;
 
 import org.springframework.stereotype.Component;
 
-@Component("catBean")
+//@Component("catBean")
 public class Cat implements Pet {
 
     public Cat() {
@@ -11,6 +11,6 @@ public class Cat implements Pet {
 
     @Override
     public void say() {
-        System.out.println("meow meow");
+        System.out.println("Meow-meow");
     }
 }
