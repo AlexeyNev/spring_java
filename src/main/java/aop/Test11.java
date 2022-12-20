@@ -10,8 +10,8 @@ public class Test11 {
         UniLibrary2 uniLibrary2 = context.getBean("uniLibrary2", UniLibrary2.class);
 
         uniLibrary2.getBook();
-        uniLibrary2.getMagazine();
-
+        uniLibrary2.returnMagazine();
+        uniLibrary2.addBook();
 
 
 
