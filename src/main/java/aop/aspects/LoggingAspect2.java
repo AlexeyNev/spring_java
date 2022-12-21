@@ -1,7 +1,10 @@
 package aop.aspects;
 
+import aop.Book2;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -9,9 +12,37 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Order(1)
 public class LoggingAspect2 {
-    @Before("aop.aspects.MyPointcuts2.allGetMethods2()")
-    public void beforeGetBookAdvice2() {
-        System.out.println("beforeGetBookAdvice: логирование попытки получить книгу/журнал");
+    @Before("aop.aspects.MyPointcuts2.allAddMethods2()")
+    public void beforeAddLoggingAdvice2(JoinPoint joinPoint) {
+
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        System.out.println("methodSignature = " + methodSignature);
+        System.out.println("methodSignature.getMethod() = " + methodSignature.getMethod());
+        System.out.println("methodSignature.getReturnType() = " + methodSignature.getReturnType());
+        System.out.println("methodSignature.getName() = " + methodSignature.getName());
+
+
+        if (methodSignature.getName().equals("addBook")) {
+            Object[] arg = joinPoint.getArgs();
+            for (Object obj : arg) {
+                if (obj instanceof Book2) {
+                    Book2 myBook2 = (Book2) obj;
+                    System.out.println("Информация о книге: название книги -  "
+                            + myBook2.getName() + ", автор - " + myBook2.getAuthor()
+                            + ", год издания - " + myBook2.getYearOfPublication());
+                }
+                else if (obj instanceof String) {
+                    System.out.println("книгу в библиотеку добавляет " + obj);
+                }
+            }
+
+
+        }
+
+
+
+        System.out.println("beforeAddLoggingAdvice2: логирование попытки получить книгу/журнал");
+        System.out.println("----------------------------------");
     }
 
 
