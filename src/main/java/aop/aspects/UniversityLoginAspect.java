@@ -13,11 +13,11 @@ import java.util.List;
 @Aspect
 public class UniversityLoginAspect {
 
-    @Before("execution(* getStudents())")
-    public void beforeGetStudentsLoggingAdvice() {
-        System.out.println("beforeGetStudentsLoggingAdvice: " +
-                "логируем получение списка студентов перед методом getStudents");
-    }
+//    @Before("execution(* getStudents())")
+//    public void beforeGetStudentsLoggingAdvice() {
+//        System.out.println("beforeGetStudentsLoggingAdvice: " +
+//                "логируем получение списка студентов перед методом getStudents");
+//    }
 
     @AfterReturning(pointcut = "execution(* getStudents())", returning = "students")
     public void afterReturningGetStudentsLoggingAdvice(List<Student> students) {

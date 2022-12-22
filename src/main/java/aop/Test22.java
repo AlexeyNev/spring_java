@@ -11,8 +11,13 @@ public class Test22 {
 
         University2 university2 = context.getBean("university2", University2.class);
         university2.addStudents();
-        List<Student2> students = university2.getStudents();
-        System.out.println(students);
+        try {
+            List<Student2> students = university2.getStudents();
+            System.out.println(students);
+        } catch (Exception e) {
+            System.out.println("Было поймано исключение " + e);
+        }
+
 
         context.close();
     }

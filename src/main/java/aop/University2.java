@@ -20,6 +20,9 @@ public class University2 {
     }
 
     public List<Student2> getStudents() {
+        System.out.println("Начало работы метода getStudents()");
+
+        System.out.println(students2.get(3));
         System.out.println("Информация о методе getStudents(): ");
         System.out.println(students2);
         return students2;
